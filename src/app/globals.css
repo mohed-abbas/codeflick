@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* CodeFlick Brand Colors */
+  --color-primary: #38D6C4;        /* Teal Blue */
+  --color-secondary: #1F2A37;      /* Midnight Navy */
+  --color-accent: #D5F6F2;         /* Soft Aqua Tint */
+  --color-light-gray: #F1F5F9;
+  --color-medium-gray: #94A3B8;
+  --color-dark-gray: #475569;
+  --color-white: #FFFFFF;
+  --color-black: #1F2A37;
+  
+  /* Semantic colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+  
+  /* Brand opacity variations */
+  --color-primary-light: oklch(from var(--color-primary) l c h / 0.1);
+  --color-primary-medium: oklch(from var(--color-primary) l c h / 0.2);
+  --color-navy-light: oklch(from var(--color-secondary) l c h / 0.05);
+  
+  /* Glass morphism */
+  --color-glass: oklch(from var(--color-white) l c h / 0.1);
+  --color-glass-border: oklch(from var(--color-white) l c h / 0.2);
+  
+  /* Brand Typography */
+  --font-primary: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  
+  /* Custom Breakpoints */
+  --breakpoint-3xl: 1920px;
+  
+  /* Spacing Scale */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  
+  /* Animation Easing */
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 oklch(from var(--color-secondary) l c h / 0.05);
+  --shadow-md: 0 4px 6px -1px oklch(from var(--color-secondary) l c h / 0.1), 0 2px 4px -1px oklch(from var(--color-secondary) l c h / 0.06);
+  --shadow-lg: 0 10px 15px -3px oklch(from var(--color-secondary) l c h / 0.1), 0 4px 6px -2px oklch(from var(--color-secondary) l c h / 0.05);
+  --shadow-xl: 0 20px 25px -5px oklch(from var(--color-secondary) l c h / 0.1), 0 10px 10px -5px oklch(from var(--color-secondary) l c h / 0.04);
+  
+  /* Z-index Scale */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-secondary);
+  background: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(from var(--color-primary) calc(l - 0.1) c h);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-light-gray);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #2563EB;
+    --color-secondary: #000000;
+    --color-medium-gray: #666666;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
